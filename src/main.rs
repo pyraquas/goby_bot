@@ -10,6 +10,9 @@ struct Handler;
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, ctx: Context, msg: Message) {
+        if msg.author.bot {
+            return;
+        }
         match msg.channel_id.name(&ctx).await.unwrap().as_str() {
             "bot-sandbox" => {
                 if let Some(response) = magic::message::handle_message(&ctx, &msg).await {

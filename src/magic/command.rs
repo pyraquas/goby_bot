@@ -1,6 +1,6 @@
 use serenity::{all::User, model::channel::Message, prelude::Context};
 
-pub async fn handle_message(ctx: &Context, msg: &Message) -> Option<String> {
+pub async fn handle_command(ctx: &Context, msg: &Message) -> Option<String> {
     let command_args: Vec<&str> = msg.content.split_whitespace().collect();
     match command_args[0] {
         "!help" => Some(String::from("Commande disponible dans ce salon: !help")),

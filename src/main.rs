@@ -1,3 +1,4 @@
+mod archipelago;
 mod magic;
 use std::env;
 
@@ -15,7 +16,7 @@ impl EventHandler for Handler {
         }
         match msg.channel_id.name(&ctx).await.unwrap().as_str() {
             "bot-sandbox" => {
-                if let Some(response) = magic::message::handle_message(&ctx, &msg).await {
+                if let Some(response) = archipelago::command::handle_command(&ctx, &msg).await {
                     if let Err(why) = msg.channel_id.say(&ctx.http, response).await {
                         println!("Error sending message: {:?}", why);
                     }

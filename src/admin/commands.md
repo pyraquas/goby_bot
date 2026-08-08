@@ -16,8 +16,8 @@ Create role and guild category related to feature pass in argument.
 
 **Permissions:** Admin \
 **Possible feature argument:**
-- **mtg** : Create "Politicien des cartes" role and "Magic: le rassemblement" guild category
-- **archi**: Create "Explorateur des îles" role and "Archipelago" guild category
+- **mtg** : Create "Politicien des cartes" role, "Magic: le rassemblement" guild category and its default "magic-general" text channel
+- **archi**: Create "Explorateur des îles" role, "Archipelago" guild category and its default "archipelago-general" text channel
 - **job**: Create "Abaye des vocations" text channel.
 - **all**: Init every features above
 

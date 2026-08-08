@@ -25,3 +25,6 @@ target
 
 /target
 command_logic.txt
+
+# Bot secrets
+.env

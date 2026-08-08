@@ -28,3 +28,6 @@ command_logic.txt
 
 # Bot secrets
 .env
+
+# Bot state written at runtime
+/data

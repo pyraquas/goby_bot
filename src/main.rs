@@ -1,8 +1,14 @@
 use poise::serenity_prelude as serenity;
 
 mod admin;
+mod mtg;
 
-pub struct Data {}
+/// State shared by every command invocation.
+pub struct Data {
+    /// Card lists registered with `/have`.
+    pub mtg: mtg::store::Store,
+}
+
 pub type Error = Box<dyn std::error::Error + Send + Sync>;
 pub type Context<'a> = poise::Context<'a, Data, Error>;
 
@@ -17,7 +23,11 @@ async fn main() {
 
     let framework = poise::Framework::builder()
         .options(poise::FrameworkOptions::<Data, Error> {
-            commands: vec![admin::commands::init()],
+            commands: vec![
+                admin::commands::init(),
+                mtg::commands::have(),
+                mtg::commands::need(),
+            ],
             event_handler: |ctx, event, framework, data| {
                 Box::pin(event_handler(ctx, event, framework, data))
             },
@@ -27,7 +37,9 @@ async fn main() {
             Box::pin(async move {
                 println!("Logged in as {}", ready.user.name);
                 poise::builtins::register_globally(ctx, &framework.options().commands).await?;
-                Ok(Data {})
+                Ok(Data {
+                    mtg: mtg::store::Store::load().await?,
+                })
             })
         })
         .build();

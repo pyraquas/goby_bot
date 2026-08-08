@@ -526,6 +526,8 @@ version = "0.1.0"
 dependencies = [
  "dotenvy",
  "poise",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 

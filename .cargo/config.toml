@@ -1,0 +1,7 @@
+# Cross-compilation to the Raspberry Pi 4 running a 64-bit OS.
+# Needs the aarch64 GNU toolchain, which lives on the Linux side (WSL):
+#   sudo apt install gcc-aarch64-linux-gnu
+#   rustup target add aarch64-unknown-linux-gnu
+#   cargo build --release --target aarch64-unknown-linux-gnu
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-linux-gnu-gcc"

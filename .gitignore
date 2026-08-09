@@ -26,8 +26,8 @@ target
 /target
 command_logic.txt
 
-# Bot secrets
-.env
+# Bot secrets, dev and prod alike
+.env*
 
 # Bot state written at runtime
 /data
